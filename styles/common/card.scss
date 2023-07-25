@@ -1,0 +1,33 @@
+.ratings{
+text-align: right;
+margin: -25px 0px 15px;
+.rating{
+    color: green;
+}
+
+}
+
+.details{
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+.btn{
+background-color:#febd69;
+color: black;
+.cart-icon{
+    margin: 0px 5px 0px 0px;
+}
+}
+.btn:hover{
+    background-color: #ffaa3c;
+}
+
+.showmore{
+    color: blue;
+    cursor: pointer;
+}
+
+
+}
+

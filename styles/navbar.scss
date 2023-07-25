@@ -1,0 +1,88 @@
+
+*{
+    margin: 0px;
+    overflow-x: hidden;
+    padding: 0px;
+}
+.items{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    align-items: center;
+    width: 100vw;
+    h2{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 2em;
+        margin-top: 30px;
+    }
+}
+
+.items-container{
+    overflow-x: hidden;
+    display: flex;
+width: 90%;
+    padding: 10px;
+flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navbar{
+background-color: #0f1111;
+height: 50px;
+padding: 15px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+.searchInput{
+    width: 650px;
+    height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .all-btn{
+    padding: 9.5px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  .searchIcon{
+    background-color: #febd69;
+padding: 8.8px;
+    color: #0f1111;
+  }
+.searchIcon:hover{
+    background-color: #fcab41;
+}
+    input{
+        width: 93.5%;
+        font-size: 1.1em;
+        padding: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.accountState{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cart{
+    color: white;
+padding: 5px 0px;
+    .count{
+position: relative;
+color: #fcab41;
+bottom: 36px;
+font-size: 1.1em;
+left: 30px;
+    }
+    span{
+        font-weight: bolder;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+}
+}
