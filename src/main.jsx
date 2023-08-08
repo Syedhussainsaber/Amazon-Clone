@@ -13,7 +13,7 @@ import "../styles/categories.scss"
 import "../styles/addtocart.scss"
 import 'tailwindcss/tailwind.css';
 
-import { ProductsApi } from './context/productsApi.jsx'
+import { ProductsApi } from './context/ProductsApi.jsx'
 import { CartApi } from './context/CartsApi.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
