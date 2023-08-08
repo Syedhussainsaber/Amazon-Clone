@@ -1,30 +1,20 @@
 import { useEffect, useState } from 'react'
-
-import { useApiData } from '../context/productsApi'
 import Navbar from './common/Navbar'
 import Cards from './common/Cards'
-import Categories from './common/Categories'
-
+// import Categories from './common/Categories'
+import { useApiData } from '../context/ProductsApi'
 // import { getCarts } from '../apis/firestoreApi'
 
 const HomeComponent = () => {
 // const [data,setData] = useState([])
 const [categoryData, setCategoryData] = useState([])
 const [categories, setCategories]= useState(false)
-
 const apiData = useApiData()
-
 
 
   return (
     <>
-    <Navbar setCategories={setCategories}/>
-{
-  categories ? <Categories data={apiData} setCategoryData={setCategoryData} setCategories={setCategories} /> : <></>
-}
- 
-    
-
+    <Navbar data={apiData} setCategoryData={setCategoryData}  setCategories={setCategories}/>
 
 {categoryData.length > 0 ?
   <div className="items">
@@ -54,10 +44,7 @@ categoryData.map((item, index)=>{
 }
 
 
-
-
-   
-    </>
+</>
   )
 }
 

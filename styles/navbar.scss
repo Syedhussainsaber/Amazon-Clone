@@ -5,10 +5,15 @@
     padding: 0px;
 }
 .items{
-    margin: 10px;
-    padding: 10px;
+    margin: 10px 0px;
+    padding: 10px 0px;
     display: flex;
     overflow-x: hidden;
+position: absolute;
+top: 90px;
+left: 0px;
+z-index: 10;
+background-color: white;
     flex-direction: column;
     justify-content: space-evenly;
 
@@ -37,34 +42,29 @@ padding: 15px;
 display: flex;
 align-items: center;
 justify-content: space-around;
-
+overflow-y: hidden;
+// position: fixed;
+width: 100%;
+z-index: 20;
 .searchInput{
     width: 650px;
-    height: 43px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  .all-btn{
-    padding: 9.5px;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  .searchIcon{
-    background-color: #febd69;
-padding: 8.8px;
-    color: #0f1111;
-  }
-.searchIcon:hover{
-    background-color: #fcab41;
-}
-    input{
-        width: 93.5%;
-        font-size: 1.1em;
-        padding: 10px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-}
+    display: flex;
+    align-items: center;
+    // height: 50px;
+//   justify-content: space-between;
 
+}
+.search-results{
+align-self: flex-end;
+color: white;
+
+.zindex10{
+    z-index: 20;
+}
+.zindex0{
+    z-index: 0;
+}
+}
 .accountState{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -85,4 +85,60 @@ left: 30px;
 
     }
 }
+.navbar-mobile{
+    display: none;
+}
+}
+
+
+
+@media (max-width:1050px){
+    .navbar{
+.navbar-mobile{
+    display: inline-block;
+padding: 5px;
+}
+.searchInput{
+    width: 50%;
+}
+.showMenu{
+transition: 0.5s ease-in;
+transform: translateX(0px);
+
+}
+.hideMenu{
+    transition: 0.5s ease-out;
+transform: translateX(150px);
+}
+.accountState{
+position: absolute;
+right: 0px;
+top: 80.5px;
+
+padding: 15px;
+z-index: 30;
+background-color: rgba($color: #000000, $alpha: 0.8);
+// color: white;
+}
+    }
+}
+
+@media (max-width:600px){
+    .items{
+top: 100px;
+    }
+    .navbar{
+        .searchInput{
+            position: absolute;
+            top: 90px;
+// right: 35px;
+left: 5%;
+
+            width: 90%;
+            padding: 0px;
+            margin: 0px;
+            margin: 8px 0px;
+z-index: 30;
+        }
+    }
 }

@@ -2,63 +2,63 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useCartApi } from '../context/CartsApi'
 import Navbar from './common/Navbar'
 import {AiFillPlusSquare,AiFillMinusSquare} from "react-icons/ai"
+import Checkout from './Checkout'
+import { Button } from 'antd'
 
 
 const AddToCart = () => {
+const {carts,handleRemove,total_amount,increaseQuantity,decreaseQuantity} = useCartApi()
 
-const {carts} = useCartApi()
-const [quantity, setQuantity] = useState(1)
-const [cartsLength,setCartsLength] = useState(carts.length)
+// const [quantity, setQuantity] = useState(1)
+
+
+
 
 // Increase the product Quantity
-const increaseQuantity = (item)=>{
-  item.quantity++
-  setQuantity(item.quantity)
-  }
+// const increaseQuantity = (item,index)=>{
+//   item.quantity++
+//   setQuantity(item.quantity)
+// }
+
   
-  //Decrease the product quantity
-  const decreaseQuantity = (item,index)=>{
-  item.quantity--
-  setQuantity(item.quantity)
-  }
+//Decrease the product quantity
+// const decreaseQuantity = async(item,index)=>{
+
+//  item.quantity--
+//   if(item.quantity===0){
+// //  handleRemoveBtn(index)
+// // item.quantity++
+// handleRemove(index)
+//   }
+//   setQuantity(item.quantity)
+// }
+
 
 // Removing the Product using Remove Button
-const handleRemoveBtn = (index)=>{
-  carts.splice(index,index+1)
-  setCartsLength(carts.length)
-}
+// const handleRemoveBtn = async(index)=>{
+// await carts.splice(index,1)
+// setCartsLength(carts.length)
+// }
 
-useEffect(()=>{
-  
-},[cartsLength])
-
-  // useMemo Hook to update the quantity value on the page
-useMemo(()=>{
-if(quantity ===0){
-const itemIndex=carts.filter((item,index)=>{
-  if(item.quantity ===0){
-    return index
-  }
-  })
-  handleRemoveBtn(itemIndex)
- 
-}
-},[quantity,cartsLength])
+// useEffect Hook to update the quantity value and carts on the page
+// useEffect(()=>{
+// if(cartsLength === 0){
+//   total_amount = 0
+//   setBillAmount(0)
+// }
+// },[cartsLength,quantity,billAmount])
 
 
 
-
-
-
-  return (
+return (
   <>
   <Navbar/>
 
 <div className="container">
 <div className="shopping-container">
-<h3 className='shopping-cart'>Shopping Card</h3>
+<h3 className='shopping-cart'>Shopping Carts</h3>
 {
-carts.map((item,index)=>{
+carts?.map((item,index)=>{
 return <>
 <div className="product" key={index}>
   <div className="product-img">
@@ -66,13 +66,17 @@ return <>
   </div>
   <div className="product-details">
   <h3>{item.title}</h3>
-  <h3>{item.price}</h3>
+  <h3>{"Rs."+Math.ceil(item.price * 82)+"/-"}</h3>
 <p>{item.description}</p>
 <div className="btns">
   <div className="quatity-section">
 <p>Quantity : <AiFillMinusSquare cursor={"pointer"} onClick={()=>{
   if(item.quantity >0){
-      decreaseQuantity(item,index)
+      decreaseQuantity(index)
+
+      if(item.quantity ===1){
+        handleRemove(index)
+      }
   }
   else{
     alert("Invalid Quantity")
@@ -80,7 +84,7 @@ return <>
  
 }}/> {item.quantity} <AiFillPlusSquare cursor={"pointer"} onClick={()=> {
  if(item.quantity >0 && item.quantity <10){
-    increaseQuantity(item)
+    increaseQuantity(index)
  }
  else{
   alert("Invalid Quantity")
@@ -89,13 +93,10 @@ return <>
 }/></p>
 
   </div>
-
-<button className='remove-btn' style={{cursor:"pointer"}} onClick={(e)=>{
-handleRemoveBtn(index)
-setCartsLength(carts.length)
-}}>Remove</button>
+<Button className='remove-btn' style={{cursor:"pointer"}} onClick={()=>{
+handleRemove(index)
+}}>Remove</Button>
 </div>
-
 </div>
 </div>
 <br/>
@@ -109,12 +110,14 @@ setCartsLength(carts.length)
 </div>
 <div className="billing-container">
 <h4>Total</h4>
-</div>
+<h2>{"Rs."+(total_amount)+"/-"}</h2>
+<Checkout amount ={total_amount*100}/>
 </div>
 
-
-  </>
+</div>
+</>
   )
 }
 
 export default AddToCart
+

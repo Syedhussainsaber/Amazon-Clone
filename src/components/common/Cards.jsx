@@ -16,8 +16,9 @@ const Cards = ({image,title,price, description,rating,id}) => {
   const {carts} = useCartApi()
 
 const [addCart, setAddCart] = useState(true)
+
 const handleCancel = () => {
-    console.log('Clicked cancel button');
+    // console.log('Clicked cancel button');
     setOpen(false);
   };
 
@@ -34,14 +35,10 @@ i++
 
 
 const handleOk = () => {
-    // setModalText('The modal will be closed after two seconds');
-    // setConfirmLoading(true);
-    // setTimeout(() => {
-    //   setOpen(false);
-    //   setConfirmLoading(false);
-
-    // }, 2000);
+    setOpen(false)
 };
+
+
 handleRating()
 
 useEffect(()=>{
@@ -71,10 +68,10 @@ if(item.id === id){
     cover={<img alt={title} style={{cursor:'pointer'}} src={image} width={50} height={280} />}
     type='inner'
   >
-{console.log(addCart)}
+{/* {console.log(addCart)} */}
 
   {/* // Product Price */}
-    <Meta title={title} description={"Rs."+Math.ceil(price*81)+"/-"}  style={{fontWeight:"bold",fontSize:"18px"}} />
+    <Meta title={title} description={"Rs."+Math.ceil(price*82)+"/-"}  style={{fontWeight:"bold",fontSize:"18px"}} />
 
   {/* Product Ratings */}
 <p className='ratings'>{ratingStars.map((star)=>{
@@ -103,10 +100,11 @@ setAddCart(!addCart)
 <Modal  title={title}
         open={open}
         onOk={handleOk}
+okText="OK"
 
         onCancel={handleCancel}>
 <img src={image} alt={title} height={300}/>
-<h4 style={{textAlign:"center",margin:"10px",fontSize:"18px"}}>{"Rs."+Math.ceil(price*81)+"/-" }</h4>
+<h4 style={{textAlign:"center",margin:"10px",fontSize:"18px"}}>{"Rs."+Math.ceil(price*82)+"/-" }</h4>
 <p style={{fontSize:"15px"}}>{description}</p>
 </Modal>
   </>
