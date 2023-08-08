@@ -144,7 +144,7 @@ Electronics
         menu={{
           items,
         }}
-        placement="bottom"
+        placement="top"
       >
         <Button size='large'>All</Button>
       </Dropdown>
@@ -179,29 +179,23 @@ Electronics
 
   
     <div className="search-results">
- <>
+
  {
  searchValue ? <List
   itemLayout="horizontal"
+  id='result-list'
   // className={searchValue?"zindex10":'zindex0'}
   dataSource={searchProducts}
   size="large"
   style={{
-width:"552px",padding:"8px",position:"absolute",
-backgroundColor:"white",
-left:"26%", 
-top:"70px",
-border:"1px solid #fcab41",
-borderRadius:"8px",
-overflowY:"scroll",
-height:"50vh",
 zIndex:searchValue?30:0
 }}
     renderItem={(item, index) => (
-    <List.Item key={index} style={{cursor:"pointer"}} >
+    <List.Item id='list-item' key={index}  >
 
-      <List.Item.Meta
-      style={{padding:"10px",  backgroundColor:"white",}}
+      <List.Item.Meta 
+      id='list-meta'
+      style={{padding:"10px",color:"black",  backgroundColor:"white",}}
         avatar={<Avatar src={item.image} size={40} />}
        
         title={<a onClick={()=>{
@@ -211,14 +205,13 @@ setSearchTitle(item.title)
         }
 }>{item.title}</a>}
         description={item.description}
-      />
-      
-      <div className="btns" style={{display:'flex',flexDirection:"column",
-    gap:"10px"
-    }}>
+      />   
+      <div className="btns">
       <Button onClick={()=>{
+        setSearchTitle(item.title)
         setOpen(true)
-      }}>View more</Button>
+
+      }} style={{overflowY:"hidden"}} >View more</Button>
       {/* <Button>Add to cart</Button> */}
       </div>
       {
@@ -241,8 +234,6 @@ setSearchTitle(item.title)
 />:<></>
  }
 
-
-</>
    
 </div>
     </>
