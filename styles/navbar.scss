@@ -42,7 +42,8 @@ flex-wrap: wrap;
 }
 .navbar{
 background-color: #0f1111;
-height: 50px;
+
+height: 60px;
 padding: 15px;
 display: flex;
 align-items: center;
@@ -122,13 +123,21 @@ align-items: center;
 
 @media (max-width:1050px){
     .navbar{
+        // position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        // overflow-y: hidden;
 .navbar-mobile{
+overflow-y: hidden;
     display: inline-block;
 padding: 5px;
 overflow-x: hidden;
 }
 .searchInput{
     width: 50%;
+    // z-index: 40 !important;
+
 }
 .showMenu{
 
@@ -138,10 +147,9 @@ transform: translateX(0px);
 .hideMenu{
     transition: 0.5s ease-out;
     transform: translateX(100%);
-
 }
 .accountState{
-position: absolute;
+position:fixed;
 right: 0px;
 top: 80.5px;
 padding: 15px;
@@ -191,6 +199,7 @@ top: 100px;
             top: 90px;
 // right: 35px;
 left: 5%;
+overflow-x: hidden;
             width: 90%;
             padding: 0px;
             margin: 0px;
